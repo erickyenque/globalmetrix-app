@@ -1,0 +1,10 @@
+<ion-content [fullscreen]="true">
+  <form [formGroup]="form" (ngSubmit)="login()" class="login-container">
+    <img src="assets/img/logo.png" alt="Logo" class="logo" />
+    <ion-text class="title">GLOBALMETRIX</ion-text>
+    <ion-input type="text" placeholder="Usuario" class="input" fill="outline" shape="round" formControlName="username"></ion-input>
+    <ion-input type="password" placeholder="Contraseña" class="input" fill="outline" shape="round" formControlName="password"></ion-input>
+    <ion-button type="submit" expand="full" class="login-button" shape="round">Ingresar</ion-button>
+  </form>
+  <ion-loading [isOpen]="isLoading" trigger="open-loading" message="Cargando..." [duration]="3000" spinner="circles"></ion-loading>
+</ion-content>
