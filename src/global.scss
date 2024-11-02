@@ -35,3 +35,15 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 // @import "@ionic/angular/css/palettes/dark.system.css";
+
+:root {
+    --gm-primary-color: #212B99;
+    --gm-secondary-color: #F4B923;
+    --gm-terciary-color: #EFEEFA;
+    --gm-gray-color: #969696;
+    --swiper-theme-color: var(--gm-secondary-color);
+}
+
+ion-icon {
+    color: white !important;
+}

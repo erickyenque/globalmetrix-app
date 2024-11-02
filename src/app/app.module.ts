@@ -8,10 +8,20 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthModule } from './auth/auth.module';
 import { provideHttpClient } from '@angular/common/http';
+import { MainModule } from './main/main.module';
+import { IonicStorageModule } from '@ionic/storage-angular';
+
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, AuthModule],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    AuthModule,
+    MainModule,
+    IonicStorageModule.forRoot()
+  ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideHttpClient(),
