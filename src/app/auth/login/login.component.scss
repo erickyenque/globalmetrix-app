@@ -4,7 +4,7 @@
 }
 
 ion-content {
-    --background: #212B99;
+    --background: #212B99 !important;
 }
 
 .login-container {
@@ -29,11 +29,15 @@ ion-content {
 .input {
     margin-bottom: 10px;
     width: 80%;
-    --background: white;
+    --background: white !important;
     min-height: 40px !important;
 }
 
 .login-button {
-    --background: #F4B923;
+    --background: #F4B923 !important;
     color: white;
+}
+
+ion-input {
+    --padding-start: 10px;
 }
