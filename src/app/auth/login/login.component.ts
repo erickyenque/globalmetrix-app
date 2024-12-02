@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
+import { ChannelService } from 'src/app/services/channel.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { StorageService } from 'src/app/services/storage.service';
 
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
     private toastController: ToastController,
     private storageService: StorageService,
     private router: Router,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private channelService: ChannelService
   ) { }
 
   ngOnInit() {
@@ -43,6 +45,7 @@ export class LoginComponent implements OnInit {
         next: async (response: any) => {          
           const { data } = response;
           await this.storageService.setItem('data', data);
+          this.channelService.sendDataToChannel('getMenu', data);
           this.form.reset();
           this.loadingService.dismiss();
           this.router.navigate(['/home']);

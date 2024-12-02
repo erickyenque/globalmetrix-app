@@ -3,6 +3,7 @@ import { StorageService } from './services/storage.service';
 import { Router } from '@angular/router';
 import { DataService } from './services/data.service';
 import { AuthService } from './services/auth.service';
+import { ChannelService } from './services/channel.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -17,12 +18,14 @@ export class AppComponent {
     private storageService: StorageService,
     private router: Router,
     private dataService: DataService<any>,
-    private authService: AuthService
+    private authService: AuthService,
+    private channelService: ChannelService
   ) { }
 
   ngOnInit() {
     this.getMenu();
     this.viewMenu();
+    this.channelService.subscribeToChannel('getMenu').subscribe(() =>this.getMenu());
   }
 
   viewMenu() {
@@ -44,6 +47,7 @@ export class AppComponent {
 
   async getMenu() {
     const data = await this.storageService.getItem('data');
+    if(!data) return;
     const { id } = data;
     if (!id) return;
     this.authService.menu(id).subscribe({
